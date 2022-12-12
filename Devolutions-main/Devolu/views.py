@@ -75,7 +75,7 @@ def eliminardev(request, id):
     elemidev = Devolucion.objects.get(id=id)
     elemidev.delete()
 
-    return redirect(registrardevo)
+    return redirect(listadev)
 
 @login_required
 def devoluActualizar(request,id):
@@ -89,6 +89,7 @@ def editarDev(request):
     dev_distribuidor = request.POST['txt_distribuidor']
     dev_nombre_vendedor = request.POST['txt_nombrevendedor']
     dev_comentario = request.POST['txt_comentario']
+    dev_fecha = request.POST['txt_fecha']
  
     cliente = Cliente.objects.get(id=dev_cliente)
     producto = Producto.objects.get(id=dev_producto)
@@ -98,10 +99,11 @@ def editarDev(request):
     devolu.Producto = producto
     devolu.nombre_vendedor = dev_nombre_vendedor
     devolu.Distribuidor = dev_distribuidor
+    devolu.fecha = dev_fecha
     devolu.comentario = dev_comentario
 
     devolu.save()
-    return redirect('/')
+    return redirect(listadev)
 
 
 @login_required
@@ -125,14 +127,14 @@ def registrarclient(request):
   
     cliente = Cliente(rut = client_rut, nombre = client_nombre)
     cliente.save()
-    return redirect('/menu/')
+    return redirect(listaclient)
 
 @login_required
 def eliminarClient(request, id):
     elemiclient = Cliente.objects.get(id=id)
     elemiclient.delete()
 
-    return redirect('/')
+    return redirect(listaclient)
 
 @login_required
 def clientActualizar(request,id):
@@ -149,7 +151,7 @@ def editarClient(request):
 
 
     client.save()
-    return redirect('/')
+    return redirect(listaclient)
 
 
 
@@ -177,7 +179,7 @@ def registrarproduct(request):
 def eliminarProduct(request, id):
     elemiproduct = Producto.objects.get(id=id)
     elemiproduct.delete()
-    return redirect(request,'listarProduct.html')
+    return redirect(listaproduct)
 
 @login_required
 def productActualizar(request,id):
@@ -196,4 +198,4 @@ def editarProduct(request):
     product.costo = product_costo
 
     product.save()
-    return redirect('/')
+    return redirect(listaproduct)

@@ -34,23 +34,23 @@
 
             <div class="mb-3">
                 <label class= "form-label"> Nombre Vendedor</label>
-                <input type="text" class="form-control" id="txt_nombrevendedor" name="txt_nombrevendedor" placeholder="" required>
+                <input type="text" class="form-control" id="txt_nombrevendedor" name="txt_nombrevendedor" value="{{devolu.nombre_vendedor}}" required>
             </div>
 
             <div class="mb-3">
                 <label class= "form-label"> Nombre Distribuidor</label>
-                <input type="text" class="form-control" id="txt_distribuidor" name="txt_distribuidor" placeholder="" required>
+                <input type="text" class="form-control" id="txt_distribuidor" name="txt_distribuidor" value="{{devolu.Distribuidor}}"  required>
             </div>
 
 
             <div class="mb-3">
                 <label class= "form-label">Fecha</label>
-                <input type="date" class="form-control" id="txt_fecha" name="txt_fecha" placeholder="Escriba aqui..." required>
+                <input type="date" class="form-control" id="txt_fecha" name="txt_fecha" value="{{devolu.fecha}}" required>
             </div>
 
             <div class="mb-3">
                 <label class= "form-label">Causa de devolucion</label>
-                <input type="text" class="form-control" id="txt_comentario" name="txt_comentario" placeholder="Escriba aqui..." required>
+                <input type="text" class="form-control" id="txt_comentario" name="txt_comentario" value="{{devolu.comentario}}" required>
             </div>
 
 
@@ -58,7 +58,7 @@
 
 
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block text-white">Registrar </button>
+                <button type="submit" class="btn btn-success btn-block text-white">Actualizar</button>
             </div>
         </form>
     </body>
