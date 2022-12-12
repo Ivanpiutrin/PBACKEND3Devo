@@ -21,6 +21,9 @@ class Devolucion(models.Model):
     nombre_vendedor = models.CharField(max_length=100)
     comentario = models.CharField(max_length=100)
 
+   
+
+
 
 
 

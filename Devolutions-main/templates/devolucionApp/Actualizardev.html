@@ -13,65 +13,52 @@
     <body>
         <form action = "/editardevo/" method="POST">{% csrf_token %}
 
-            <div class="mb-3">
-                <label class= "form-label">RUT</label>
-                <input type="text" class="form-control" id="txt_rut" name="txt_rut" value="{{dev.rut}}" minlength="10" maxlength="10" readonly required>
-            </div>
+            <div><h3>Datos Clientes</h3></div>
+            
+            <select class="form-select" aria-label="Default select example" name = "sel_cliente">    
+                <option selected>Seleccione..</option>
+                {% for nul in clientes %}
+                <option value={{nul.id}}>{{nul.nombre}}</option>
+                {% endfor %}
+                    
+            </select>
+            
+            <div><h3>Datos Productos</h3></div>
 
-            <div class="mb-3">
-                <label class= "form-label"> Nombre Cliente</label>
-                <input type="text" class="form-control" id="txt_nombre" name="txt_nombre" value="{{dev.nombre}}" required>
-            </div>
-
-            <div class="mb-3">
-                <label class= "form-label"> Apellido Cliente</label>
-                <input type="text" class="form-control" id="txt_apellido" name="txt_apellido" value="{{dev.apellido}}" required>
-            </div>
-
-            <div class="mb-3">
-                <label class= "form-label"> Email Cliente</label>
-                <input type="text" class="form-control" id="txt_email" name="txt_email" value="{{dev.email}}" required>
-            </div>
-
-
-            <div class="mb-3">
-                <label class= "form-label"> Telefono</label>
-                <input type="number" class="form-control" id="txt_celular" name="txt_celular" value="{{dev.celular}}" required>
-            </div>
-
-            <div class="mb-3">
-                <label class= "form-label">Cantidad</label>
-                <input type="number" class="form-control" id="txt_cantidad" name="txt_cantidad"  value="{{dev.cantidad}}" required>
-            </div>
-
-            <div class="mb-3">
-                <label class= "form-label"> Nombre Producto</label>
-                <input type="text" class="form-control" id="txt_producto" name="txt_producto" value="{{dev.producto}}" required>
-            </div>
-
-            <div class="mb-3">
-                <label class= "form-label"> Codigo</label>
-                <input type="text" class="form-control" id="txt_codigo" name="txt_codigo"  value="{{dev.codigo}}" required>
-            </div>
+            <select class="form-select" aria-label="Default select example" name = "sel_producto">
+                <option selected>Seleccione..</option>
+                {% for nul in producto%}
+                <option value={{nul.id}}>{{nul.nomproduct}}</option>
+                {% endfor %}
+            </select>
 
             <div class="mb-3">
                 <label class= "form-label"> Nombre Vendedor</label>
-                <input type="text" class="form-control" id="txt_nombrevendedor" name="txt_nombrevendedor" value="{{dev.nombrevendedor}}" required>
+                <input type="text" class="form-control" id="txt_nombrevendedor" name="txt_nombrevendedor" placeholder="" required>
             </div>
 
             <div class="mb-3">
                 <label class= "form-label"> Nombre Distribuidor</label>
-                <input type="text" class="form-control" id="txt_distribuidor" name="txt_distribuidor" value="{{dev.distribuidor}}" required>
+                <input type="text" class="form-control" id="txt_distribuidor" name="txt_distribuidor" placeholder="" required>
+            </div>
+
+
+            <div class="mb-3">
+                <label class= "form-label">Fecha</label>
+                <input type="date" class="form-control" id="txt_fecha" name="txt_fecha" placeholder="Escriba aqui..." required>
             </div>
 
             <div class="mb-3">
                 <label class= "form-label">Causa de devolucion</label>
-                <input type="text" class="form-control" id="txt_comentario" name="txt_comentario" value="{{dev.comentario}}" required>
+                <input type="text" class="form-control" id="txt_comentario" name="txt_comentario" placeholder="Escriba aqui..." required>
             </div>
 
 
+
+
+
             <div class="form-group">
-                <button type="submit" class="btn btn-success btn-block text-white"> Actualizar </button>
+                <button type="submit" class="btn btn-success btn-block text-white">Registrar </button>
             </div>
         </form>
     </body>

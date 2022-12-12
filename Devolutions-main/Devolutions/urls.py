@@ -24,7 +24,7 @@ urlpatterns = [
     path('registrodev/', registrard),
     path('registrardevolucio/', registrardevo),
     path('eliminar/<id>',eliminardev),
-    path('actualizar/<id>', devoluActualizar),
+    path('actualizarDev/<id>', devoluActualizar),
     path('editardevo/', editarDev),
     path('registrar/', registrar),
     path('menu/',menu),

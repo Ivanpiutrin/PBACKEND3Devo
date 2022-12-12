@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, redirect
 #from Devolu.forms import FormRegistro
@@ -41,7 +39,14 @@ def listadev(request):
 
 @login_required
 def registrard(request):
-    return render(request,'FormularioDev.html')    
+    cliente = Cliente.objects.all()
+    producto = Producto.objects.all()
+    context = {
+        'clientes': cliente,
+        'producto': producto
+    }
+
+    return render(request,'FormularioDev.html', context)    
 
 @login_required
 def registrardevo(request):
@@ -50,14 +55,20 @@ def registrardevo(request):
     dev_distribuidor = request.POST['txt_distribuidor']
     dev_nombre_vendedor = request.POST['txt_nombrevendedor']
     dev_comentario = request.POST['txt_comentario']
- 
+    dev_fecha = request.POST['txt_fecha']
 
-    devolucion = Devolucion(Producto = dev_producto, Cliente=dev_cliente,distribuidor=dev_distribuidor,nombre_vendedor=dev_nombre_vendedor, comentario = dev_comentario )
+
+    cliente = Cliente.objects.get(id=dev_cliente)
+    producto = Producto.objects.get(id=dev_producto)
+
+
+
+    devolucion = Devolucion(Producto = producto, Cliente=cliente, Distribuidor=dev_distribuidor, nombre_vendedor=dev_nombre_vendedor, comentario = dev_comentario, fecha = dev_fecha)
     
     devolucion.save()
     
 
-    return redirect('/')
+    return redirect('/menu/')
 
 @login_required
 def eliminardev(request, id):
@@ -68,8 +79,8 @@ def eliminardev(request, id):
 
 @login_required
 def devoluActualizar(request,id):
-    dev = Devolucion.objects.get(id=id)
-    return render(request,'Actualizardev.html',{"dev":dev})    
+    devolucion = Devolucion.objects.get(id=id)
+    return render(request,'Actualizardev.html',{"devolucion":devolucion})    
 
 @login_required
 def editarDev(request):
@@ -79,9 +90,12 @@ def editarDev(request):
     dev_nombre_vendedor = request.POST['txt_nombrevendedor']
     dev_comentario = request.POST['txt_comentario']
  
-    devolu = Devolucion.objects.get(Cliente = dev_cliente)
+    cliente = Cliente.objects.get(id=dev_cliente)
+    producto = Producto.objects.get(id=dev_producto)
+
+    devolu = Devolucion.objects.get(Cliente = cliente)
     
-    devolu.Producto = dev_producto
+    devolu.Producto = producto
     devolu.nombre_vendedor = dev_nombre_vendedor
     devolu.Distribuidor = dev_distribuidor
     devolu.comentario = dev_comentario

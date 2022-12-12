@@ -22,45 +22,36 @@
         {% endblock %} 
         <a href="/registrodev/" class="btn btn-primary">Nueva devolucion</a>
         
-        {% if dcliente %}
+        {% if devolucion %}
 
         <table class= "table alert alert-success">
             <thead class="thead-inverse">
                 <tr>
                     <th>ID</th>
-                    <th>RUT</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Email</th>
-                    <th>Celular</th>
-                    <th>Cantidad</th>
-                    <th>Nombre Producto</th>
-                    <th>Codigo</th>
-                    <th>Nombre Vendedor</th>
+                    <th>Cliente</th>
+                    <th>Producto</th>
                     <th>Distribuidor</th>
-                    <th>Comentario</th>
+                    <th>Fecha</th>
+                    <th>Nombre Vendedor</th>
+                    <th>Comentarios</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for dc in dcliente %}
+                {% for dv in devolucion %}
                 <tr>
-                    <td>{{dc.id}}</td>
-                    <td scope="row">{{dc.rut}}</td>
-                    <td>{{dc.nombre}}</td>
-                    <td>{{dc.apellido}}</td>
-                    <td>{{dc.email}}</td>
-                    <td>{{dc.celular}}</td>
-                    <td>{{dc.cantidad}}</td>
-                    <td>{{dc.producto}}</td>
-                    <td>{{dc.codigo}}</td>
-                    <td>{{dc.nombrevendedor}}</td>
-                    <td>{{dc.distribuidor}}</td>
-                    <td>{{dc.comentario}}</td>
+                    <td>{{dv.id}}</td>
+                    <td scope="row">{{dv.Cliente}}</td>
+                    <td>{{dv.Producto}}</td>
+                    <td>{{dv.Distribuidor}}</td>
+                    <td>{{dv.fecha}}</td>
+                    <td>{{dv.nombre_vendedor}}</td>
+                    <td>{{dv.comentario}}</td>
+                   
 
                     <td>
-                        <a href="#" onclick="confirmarEliminacion({{dc.id}})"><i class="bi bi-trash3-fill"></i></a>
-                        <a href="actualizar/{{dc.id}}"><i class="bi bi-pencil-fill"></i></a>
+                        <a href="#" onclick="confirmarEliminacion({{dv.id}})"><i class="bi bi-trash3-fill"></i></a>
+                        <a href="actualizarDev/{{dv.id}}"><i class="bi bi-pencil-fill"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
