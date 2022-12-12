@@ -7,12 +7,17 @@ from django.utils import timezone
 class Cliente (models.Model):
     rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=100)
+    def __str__(self):
+        return self.nombre
 
 class Producto(models.Model):
     nomproduct = models.CharField(max_length=100)
     cantidad = models.PositiveIntegerField()
     costo = models.PositiveIntegerField()
 
+    def __str__(self):
+        return self.nomproduct
+    
 class Devolucion(models.Model):
     Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     Producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
